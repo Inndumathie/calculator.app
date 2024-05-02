@@ -1,4 +1,4 @@
-function calculate() {
+function Matrixmultiplication() {
     var row1 = parseInt(document.getElementById("row1").value);
     var col1 = parseInt(document.getElementById("col1").value);
     var row2 = parseInt(document.getElementById("row2").value);
@@ -30,6 +30,29 @@ function calculate() {
             matrix2[i][j] = parseInt(prompt("Enter value for Matrix 2 at row " + (i + 1) + " and column " + (j + 1)));
         }
     }
+
+    var result = multiply(matrix1, matrix2);
+
+    document.getElementById("result").innerHTML = "<h2>Result:</h2>" + result.map(row => row.join(" ")).join("<br>");
+}
+
+function multiply(matrix1, matrix2) {
+    var result = [];
+
+    for (var i = 0; i < matrix1.length; i++) {
+        result[i] = [];
+        for (var j = 0; j < matrix2[0].length; j++) {
+            var sum = 0;
+            for (var k = 0; k < matrix1[0].length; k++) {
+                sum += matrix1[i][k] * matrix2[k][j];
+            }
+            result[i][j] = sum;
+        }
+    }
+
+    return result;
+}
+
 
     var result = multiplyMatrices(matrix1, matrix2);
 
